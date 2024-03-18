@@ -22,21 +22,18 @@ def handle_client(client_socket):
     # Close connection
     client_socket.close()
 
-def main():
-    # Set up server
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('127.0.0.1', 8888))
-    server.listen(5)
-    print("Server listening on port 8888...")
 
-    while True:
-        # Accept client connection
-        client_socket, addr = server.accept()
-        print("Accepted connection from", addr)
+# Set up server
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('127.0.0.1', 8888))
+server.listen(5)
+print("Server listening on port 8888...")
 
-        # Create a thread to handle client
-        client_handler = threading.Thread(target=handle_client, args=(client_socket,))
-        client_handler.start()
+while True:
+    # Accept client connection
+    client_socket, addr = server.accept()
+    print("Accepted connection from", addr)
 
-if __name__ == "__main__":
-    main()
+    # Create a thread to handle client
+    client_handler = threading.Thread(target=handle_client, args=(client_socket,))
+    client_handler.start()
