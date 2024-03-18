@@ -9,7 +9,7 @@ public class Client
     try {
       int res=0;
       Scanner scan = new Scanner(System.in);
-      System.out.print("Enter Operation : ");
+      System.out.print("Enter Operation +,-,*,/ : ");
       char op = scan.next().charAt(0);
 
       System.out.print("Enter First Number : ");
